@@ -69,7 +69,7 @@ import { Chart, registerables } from 'chart.js';
         // Define the chart options
         const chartOptions = computed(() => ({
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: true,
         plugins: {
             legend: {
             position: 'top',

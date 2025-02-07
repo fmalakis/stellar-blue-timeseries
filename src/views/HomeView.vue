@@ -6,49 +6,53 @@
         <div class="flex flex-row justify-around">
         </div>
     </section>
-    <section class="mt-4 bg-slate-500 p-4 rounded-lg">
-      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+    <section class="mt-4 bg-slate-600 p-4 rounded-lg">
+      <h2 class="text-white text-2xl font-semibold">Filters:</h2>
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-start gap-4 mt-2">
         <div>
-          <label for="startDate" class="text-white mr-2">Start Date:</label>
+          <label for="startDate" class="text-white mr-2 text-xl">After:</label>
           <input
             type="date"
             id="startDate"
             v-model="startDate"
-            class="p-2 rounded"
+            class="p-2 text-white bg-gray-700 rounded-lg border border-gray-400 dark:text-white dark:[color-scheme:dark]"
           />
         </div>
         <div>
-          <label for="endDate" class="text-white mr-2">End Date:</label>
+          <label for="endDate" class="text-white mr-2 text-xl">Before:</label>
           <input
             type="date"
             id="endDate"
             v-model="endDate"
-            class="p-2 rounded"
+            class="p-2 text-white bg-gray-700 rounded-lg border border-gray-400 dark:text-white dark:[color-scheme:dark]" 
           />
         </div>
         <div>
-            <label for="showDE" class="text-white">Germany</label>
             <input
                 type="checkbox"
                 id="showDE"
                 v-model="showDE"
+                class="accent-purple-600 size-4"
             />
+            <label for="showDE" class="text-white text-xl ml-2">Germany</label>
         </div>
         <div>
-            <label for="showGR" class="text-white">Greece</label>
             <input
                 type="checkbox"
                 id="showGR"
                 v-model="showGR"
+                class="accent-purple-600 size-4"
             />
+            <label for="showGR" class="text-white text-xl ml-2">Greece</label>
         </div>
         <div>
-            <label for="showFR" class="text-white">France</label>
             <input
                 type="checkbox"
                 id="showFR"
                 v-model="showFR"
+                class="accent-purple-600 size-4"
             />
+            <label for="showFR" class="text-white text-xl ml-2">France</label>
         </div>
       </div>
     </section>
