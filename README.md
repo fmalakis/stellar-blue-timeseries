@@ -1,6 +1,6 @@
 # stellar-blue-timeseries
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is using Vite to build the application. You can find information on how to run the project for development and production bellow.
 
 ## Recommended IDE Setup
 
@@ -26,6 +26,12 @@ npm run dev
 
 ```sh
 npm run build
+```
+
+### Run Production
+
+```sh
+npm run preview
 ```
 
 ### Lint with [ESLint](https://eslint.org/)

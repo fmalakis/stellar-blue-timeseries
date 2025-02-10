@@ -2,7 +2,7 @@
     <div class="max-h-96 overflow-x-auto">
       <table class="table-auto w-full mt-4">
         <thead class="sticky top-0">
-          <tr class="bg-cyan-700 text-white text-md md:text-l lg:text-xl">
+          <tr class="bg-cyan-600 dark:bg-cyan-700 text-white text-md md:text-l lg:text-xl">
             <th>Date</th>
             <th v-if="showDE">Germany (DE)</th>
             <th v-if="showGR">Greece (GR)</th>

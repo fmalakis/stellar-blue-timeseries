@@ -1,8 +1,8 @@
 <template>
-  <main class="bg-slate-700 p-4 min-h-screen">
-    <section class="bg-slate-600 rounded-lg p-4 ">
+  <main class="dark:bg-slate-700 p-4 min-h-screen">
+    <section class="bg-slate-500 dark:bg-slate-600 rounded-lg p-4 ">
         <h2 class="text-white text-xl md:lg:text-2xl mt-2">This is a demo project for Stellar Blue's technical interview. You can use this demo tool to:</h2>
-        <div class="text-black dark:text-white pt-2 text-l md:lg:text-xl">
+        <div class="text-white pt-2 text-l md:lg:text-xl">
             <ul class="flex flex-col list-inside space-y-1">
                 <li class="inline-flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-1">
@@ -26,7 +26,7 @@
             </ul>   
         </div>
     </section>
-    <section class="mt-4 bg-slate-600 p-4 rounded-lg">
+    <section class="mt-4 bg-slate-500 dark:bg-slate-600 p-4 rounded-lg">
       <h2 class="text-white text-2xl font-semibold">Filters:</h2>
       <div class="flex flex-col md:flex-row items-start md:items-center justify-start gap-4 mt-2">
         <div>
@@ -35,7 +35,7 @@
             type="date"
             id="startDate"
             v-model="startDate"
-            class="p-2 text-white bg-gray-700 rounded-lg border border-gray-400 dark:text-white dark:[color-scheme:dark]"
+            class="p-2 text-white bg-slate-600 dark:bg-gray-700 rounded-lg border border-gray-400 scheme-dark"
           />
         </div>
         <div>
@@ -44,34 +44,34 @@
             type="date"
             id="endDate"
             v-model="endDate"
-            class="p-2 text-white bg-gray-700 rounded-lg border border-gray-400 dark:text-white dark:[color-scheme:dark]" 
+            class="p-2 text-white bg-slate-600 dark:bg-gray-700 rounded-lg border border-gray-400 scheme-dark" 
           />
         </div>
         <div class="flex flex-row flex-wrap gap-4">
-            <div class="rounded-lg bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showDE }">
+            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showDE }">
                 <input
                     type="checkbox"
                     id="showDE"
                     v-model="showDE"
-                    class="accent-purple-600 size-4 cursor-pointer"
+                    class="accent-purple-500 dark:accent-purple-600 size-4 cursor-pointer"
                 />
                 <label for="showDE" class="text-white text-xl ml-2 cursor-pointer">Germany</label>
             </div>
-            <div class="rounded-lg bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showGR }">
+            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showGR }">
                 <input
                     type="checkbox"
                     id="showGR"
                     v-model="showGR"
-                    class="accent-purple-600 size-4 cursor-pointer"
+                    class="accent-purple-500 dark:accent-purple-600 size-4 cursor-pointer"
                 />
                 <label for="showGR" class="text-white text-xl ml-2 cursor-pointer">Greece</label>
             </div>
-            <div class="rounded-lg bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showFR }">
+            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showFR }">
                 <input
                     type="checkbox"
                     id="showFR"
                     v-model="showFR"
-                    class="accent-purple-600 size-4 cursor-pointer"
+                    class="accent-purple-500 dark:accent-purple-600 size-4 cursor-pointer"
                 />
                 <label for="showFR" class="text-white text-xl ml-2 cursor-pointer">France</label>
             </div>
@@ -79,11 +79,11 @@
       </div>
     </section>
     <section class="mt-4 grid xl:grid-cols-2 grid-cols-1 gap-4">
-        <div class="bg-slate-600 rounded-lg p-4">
+        <div class="bg-slate-500 dark:bg-slate-600 rounded-lg p-4">
             <h3 class="text-white font-bold text-xl md:lg:text-2xl">Electricity Prices</h3>
             <PricesTable v-if="filteredData" :prices="filteredData" :showDE="showDE" :showGR="showGR" :showFR="showFR" @editModalClicked="openModal"/>
         </div>
-        <div class="bg-slate-600 rounded-lg p-4">
+        <div class="bg-slate-500 dark:bg-slate-600 rounded-lg p-4">
             <h4 class="text-white font-bold text-xl md:lg:text-2xl">Electricity Prices over time</h4>
             <PriceChart v-if="filteredData" :prices="filteredData" :showDE="showDE" :showGR="showGR" :showFR="showFR"/>
         </div>
@@ -147,7 +147,7 @@ export default {
 
     onMounted(async () => {
       try {
-        const response = await fetch("src/assets/timeseries.json");
+        const response = await fetch("/timeseries.json");
         if (!response.ok) throw new Error(`JSON error! Status: ${response.status}`);
         rawData.value = await response.json();
       } catch (error) {

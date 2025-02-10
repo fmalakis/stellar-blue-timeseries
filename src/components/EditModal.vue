@@ -12,7 +12,7 @@
                 max="2000"
                 id="newValue"
                 v-model="newValue"
-                class="border p-1 mb-4 w-full text-black dark:text-white bg-slate-800"
+                class="border p-1 mb-4 w-full text-black dark:text-white bg-slate-200 dark:bg-slate-800"
                 />
 
             <span v-if="isInvalidInput" class="text-red-400">Warning: New value should be between -2000 and 2000!</span>
