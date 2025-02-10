@@ -48,7 +48,8 @@ import { ref } from 'vue';
         setup(props) {
             const newValue = ref(props.currentValue);
 
-            const isInvalidInput = computed(() => (newValue.value < -2000 || newValue.value > 2000) && newValue.value)
+            // Computed value for valid input (-2000 <= X <= 2000, including 0)
+            const isInvalidInput = computed(() => newValue.value < -2000 || newValue.value > 2000 || (!newValue.value && newValue.value !== 0))
 
             return {newValue, isInvalidInput}
         }

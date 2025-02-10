@@ -114,7 +114,7 @@ export default {
         this.isEditModalShowing = true;
     },
     handleModalClose(newValue) {
-        if (newValue) this.updateCell(this.currentRow, this.currentCol, newValue)
+        if (newValue || newValue === 0) this.updateCell(this.currentRow, this.currentCol, newValue)
         this.currentRow = null;
         this.currentCol = null;
         this.currentVal = null;
