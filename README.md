@@ -2,6 +2,8 @@
 
 This project is using Vite to build the application. You can find information on how to run the project for development and production bellow.
 
+The project is using Vue 3 and TailwindCSS.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

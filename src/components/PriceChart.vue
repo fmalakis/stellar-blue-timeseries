@@ -27,75 +27,76 @@ import { Chart, registerables } from 'chart.js';
 
         // Create a computed property that builds chartData from the prop
         const chartData = computed(() => {
-        if (!props.prices || props.prices.length === 0) {
-            return null;
-        }
+            if (!props.prices || props.prices.length === 0) {
+                return null;
+            }
 
-        const labels = props.prices.map(entry => entry.date);
+            const labels = props.prices.map(entry => entry.date);
 
-        // Build separate arrays for each country’s prices
-        const dePrices = props.prices.map(entry => entry.DE);
-        const grPrices = props.prices.map(entry => entry.GR);
-        const frPrices = props.prices.map(entry => entry.FR);
+            // Build separate arrays for each country’s prices
+            const dePrices = props.prices.map(entry => entry.DE);
+            const grPrices = props.prices.map(entry => entry.GR);
+            const frPrices = props.prices.map(entry => entry.FR);
 
-        return {
-            labels,
-            datasets: [
-            {
-                label: 'Germany (DE) Price',
-                data: dePrices,
-                borderColor: 'blue',
-                backgroundColor: 'rgba(0, 0, 255, 0.2)',
-                tension: 0.3,
-            },
-            {
-                label: 'Greece (GR) Price',
-                data: grPrices,
-                borderColor: 'green',
-                backgroundColor: 'rgba(0, 255, 0, 0.2)',
-                tension: 0.3,
-            },
-            {
-                label: 'France (FR) Price',
-                data: frPrices,
-                borderColor: 'red',
-                backgroundColor: 'rgba(255, 0, 0, 0.2)',
-                tension: 0.3,
-            },
-            ],
-        };
-    });
+            return {
+                labels,
+                datasets: [
+                {
+                    label: 'Germany (DE) Price',
+                    data: dePrices,
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(0, 0, 255, 0.2)',
+                    tension: 0.3,
+                },
+                {
+                    label: 'Greece (GR) Price',
+                    data: grPrices,
+                    borderColor: 'green',
+                    backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                    tension: 0.3,
+                },
+                {
+                    label: 'France (FR) Price',
+                    data: frPrices,
+                    borderColor: 'red',
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                    tension: 0.3,
+                },
+                ],
+            };
+        });
 
         // Define the chart options
         const chartOptions = computed(() => ({
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-            legend: {
-            position: 'top',
-            labels: {
-                color: '#fff',
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                position: 'top',
+                labels: {
+                    color: '#fff',
+                },
+                },
+                tooltip: {
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                },
             },
+            scales: {
+                x: {
+                title: { display: true, text: 'Time', color: '#fff' },
+                ticks: { color: '#fff' },
+                grid: { color: 'rgba(255,255,255,0.2)' },
+                },
+                y: {
+                title: { display: true, text: 'Price (EUR/MWh)', color: '#fff' },
+                ticks: { color: '#fff' },
+                grid: { color: 'rgba(255,255,255,0.2)' },
+                },
             },
-            tooltip: {
-            titleColor: '#fff',
-            bodyColor: '#fff',
-            },
-        },
-        scales: {
-            x: {
-            title: { display: true, text: 'Time', color: '#fff' },
-            ticks: { color: '#fff' },
-            grid: { color: 'rgba(255,255,255,0.2)' },
-            },
-            y: {
-            title: { display: true, text: 'Price (EUR/MWh)', color: '#fff' },
-            ticks: { color: '#fff' },
-            grid: { color: 'rgba(255,255,255,0.2)' },
-            },
-        },
         }));
 
+        // Hides/shows timeseries when filters on HomeView change
         const updateVisibility = () => {
             // Ensure the chart instance exists.
             if (!chartRef.value || !chartRef.value.chartInstance) {
@@ -119,7 +120,7 @@ import { Chart, registerables } from 'chart.js';
             { immediate: true }
         );
 
-    return { chartData, chartOptions, chartRef };
+        return { chartData, chartOptions, chartRef };
     },
     };
 </script>

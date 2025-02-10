@@ -48,7 +48,7 @@
           />
         </div>
         <div class="flex flex-row flex-wrap gap-4">
-            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showDE }">
+            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-500/50 dark:bg-purple-600/50': !showDE }">
                 <input
                     type="checkbox"
                     id="showDE"
@@ -57,7 +57,7 @@
                 />
                 <label for="showDE" class="text-white text-xl ml-2 cursor-pointer">Germany</label>
             </div>
-            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showGR }">
+            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-500/50 dark:bg-purple-600/50': !showGR }">
                 <input
                     type="checkbox"
                     id="showGR"
@@ -66,7 +66,7 @@
                 />
                 <label for="showGR" class="text-white text-xl ml-2 cursor-pointer">Greece</label>
             </div>
-            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-600/50': !showFR }">
+            <div class="rounded-lg bg-purple-500 dark:bg-purple-600 inline-flex items-center p-2 cursor-pointer" :class="{ 'bg-purple-500/50 dark:bg-purple-600/50': !showFR }">
                 <input
                     type="checkbox"
                     id="showFR"
@@ -107,7 +107,6 @@ export default {
   },
   methods: {
     openModal(row, country, entry, date) {
-        console.log(row, country, entry, date)
         this.currentRow = row;
         this.currentCol = country;
         this.currentVal = entry;
@@ -125,6 +124,7 @@ export default {
   },
   data() {
     return {
+       // Currently selected row for cell edit
        currentRow: null,
        currentCol: null,
        currentVal: null,
@@ -133,7 +133,7 @@ export default {
   },
   setup() {
 
-    const rawData = ref([]);
+    const rawData = ref([]); // Raw data of the JSON file
     const startDate = ref("");
     const endDate = ref("");
     const showDE = ref(true);
@@ -141,7 +141,7 @@ export default {
     const showFR = ref(true);
     const isEditModalShowing = ref(false);
 
-
+    // Format time based on project requirements
     const formatTime = (dateString) => new Date(dateString).toLocaleDateString("en-DE", { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' });
 
 
@@ -155,6 +155,7 @@ export default {
       }
     });
 
+    // Formatted data for better UX
     const formattedData = computed(() => {
       return rawData.value.map((entry) => ({
         date: formatTime(entry.DateTime),
@@ -165,6 +166,7 @@ export default {
       }));
     });
 
+    // Updates raw data on cell edit. Filtered data will then update since it is computed
     const updateCell = (rowIndex, column, newValue) => {
       if (!rawData.value[rowIndex]) return;
       if (column === "DE") {
@@ -176,6 +178,7 @@ export default {
       }
     };
 
+    // Filtered data for both table and chart
     const filteredData = computed(() => {
       if (!startDate.value && !endDate.value) {
         return formattedData.value;
