@@ -6,6 +6,11 @@
         <span class="text-sm text-black dark:text-white"><em>Note: The new value should be between <strong>-2000</strong> and <strong>2000</strong>.</em></span>
         <form>
             <label for="newValue" class="text-sm text-black dark:text-white">New value:</label>
+            <!-- 
+            An HTML input of type number will only allow the user to input numerical values and
+            bring up the correct keyboard on mobile devices. Realistically, if we had a back-end,
+            we would need to validate the value we send since client side can be tampered with easily. 
+            -->
             <input
                 type="number"
                 min="-2000"
